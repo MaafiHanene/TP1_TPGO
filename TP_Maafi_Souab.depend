@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1539811805 source:/home/maafihanene/TP_Maafi_Souab/main.c
+	<stdio.h>
+	<stdlib.h>
+
