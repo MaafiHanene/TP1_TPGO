@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <time.h>
 #include <sys/time.h>
+
 int Vmax; //*100 pour rendre le poids en entier
 int Pmax;
 int n;
+
 
 int F_recursif(int nbObjets,int volume, int poids);
 int F_dynamique();
@@ -18,7 +20,7 @@ void allouerTableau(int i,int j,int k);
 void genererTableauAlea(int nbObjets);
 
 
-//int tabs[n][Vmax+1][Pmax+1];
+
 int ***tab;//n*(vmax+1)*(Pmax+1)
 
 typedef struct objet objet;
@@ -34,6 +36,7 @@ int main()
 {
     clock_t debut,fin;
     float temps;
+
     BEGIN:
 
 
@@ -64,10 +67,12 @@ int main()
     {
         goto BEGIN;
     }
-    //printf("max = %d",(-1)*maxValeur);
+   
+
     printf("************** Algorithme récursif *****************\n");
     debut = clock();
-     printf("\t\tGain == %d\n\n",F_recursif(n-1,Vmax,Pmax));
+    printf("\t\tGain == %d\n\n",F_recursif(n-1,Vmax,Pmax));
+
     fin = clock();
     temps = (float)(fin - debut)/CLOCKS_PER_SEC;
     printf("temps exe recursif = %f\n\n\n",temps);
@@ -78,15 +83,18 @@ int main()
     fin = clock();
     temps = (float)(fin - debut)/CLOCKS_PER_SEC;
     printf("temps exe programmation dynamique = %f\n\n\n",temps);
+
     visualiserListe:
     printf("Voulez vous visualiser la liste des objets choisis ? o/n :");
     scanf("%c",&c);
+
     if(c == 'o')
     {
         printf("La liste des objets choisis sont les objets dont les numeros les suivants : ");
         rechercheSuiteObjets();
         printf("\n\n\n");
     }
+
     else if(c=='n')
     {
         lebererTableau();
@@ -118,13 +126,21 @@ int main()
 
 
 
+    lebererTableau();
+    return 0;
+}
+
+
+
 //Générer le tableau du TP
 void genererTableauObjets()
 {
+
     n=20;
     Vmax = 300;
     Pmax = 520;
     tabObjets = (objet*)malloc(sizeof(objet)*n);
+
     objet o;
     //objet 1
     o.poids = 20;
